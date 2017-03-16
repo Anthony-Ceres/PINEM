@@ -63,5 +63,24 @@ body {
 Testing Simple Design
 
 </div>
+  
+
+<input type="text" id="subinput" value="URL">
+
+<p id="subreddit"></p>
+
+<button onclick="myFunction()">Generate</button>
+
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("subinput").value;
+    document.getElementById("subreddit").innerHTML = x;
+}
+
+</script>
+<p>Input image URL and hit Generate.</p>
+  
 </body>
 </html>
