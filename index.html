@@ -66,13 +66,14 @@ Testing Simple Design
 <input type="text" id="imginput" value="URL">
 
 
-<button onclick="myFunction()">Generate</button>
+<button onclick="genSubmits()">Generate</button>
   </div>
 
 
 <script>
-function myFunction() {
-    var x = document.getElementById("imginput").value;
+function genSubmits() {
+    var x = document.getElementById("imginput");
+    x.setAttribute("type", "url");
     document.getElementById("output").innerHTML = x;
 }
 
