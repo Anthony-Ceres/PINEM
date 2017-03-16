@@ -10,12 +10,12 @@ Gist
   Star 0
   Fork 0 Anthony-Ceres/CSSlab
  Code  Issues 0  Pull requests 0  Projects 1  Wiki  Pulse  Graphs  Settings
-Tree: 3d56c3d6c7 Find file Copy pathCSSlab/index.html
-3d56c3d  17 minutes ago
+Tree: 885c9d69d3 Find file Copy pathCSSlab/index.html
+885c9d6  11 minutes ago
 @Anthony-Ceres Anthony-Ceres Update index.html
 1 contributor
 RawBlameHistory    
-87 lines (66 sloc)  1.77 KB
+89 lines (68 sloc)  1.78 KB
 <html>
 <title>Heya!</title>
 <style>
@@ -70,25 +70,27 @@ body {
   <a href="resources/imlibrary.html">page</a>
 <br>
 Testing Simple Design
+<br>
+<div id="output">
+<input type="text" id="imginput" value="URL">
 
-</div>
-  
-
-<input type="text" id="subinput" value="URL">
-
-<p id="subreddit"></p>
 
 <button onclick="myFunction()">Generate</button>
-
+  </div>
 
 
 <script>
 function myFunction() {
-    var x = document.getElementById("subinput").value;
-    document.getElementById("subreddit").innerHTML = x;
+    var x = document.getElementById("imginput").value;
+    document.getElementById("output").innerHTML = x;
 }
 </script>
 <p>Input image URL and hit Generate.</p>
+  
+  
+</div>
+  
+
   
 </body>
 </html>
