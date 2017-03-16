@@ -62,18 +62,18 @@ body {
 <br>
 Testing Simple Design
 <br>
-  
+<div id="output">
 <input type="text" id="imginput" value="URL">
 
 
 <button onclick="myFunction()">Generate</button>
-
+  </div>
 
 
 <script>
 function myFunction() {
     var x = document.getElementById("imginput").value;
-    document.getElementById("fade").innerHTML = x;
+    document.getElementById("output").innerHTML = x;
 }
 
 </script>
