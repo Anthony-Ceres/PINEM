@@ -8,27 +8,28 @@ It is, of course, easier to continually query DeviantArt's /gallery/ API endpoin
 wot
 Although the DeviantArt API is specifically designed to not allow you to find deviationid UUIDs with a URL, these UUIDs appear to be clearly exposed with the HTML meta-tag defined apple-itunes-app, so you can easily scrape it there. You don't have to code too much around this because you can only fetch the header of the HTML page and read it using some sort of DOM handling. (PHP has the DOM extension, JavaScript is probably well suited to this but I haven't touched it in ages.)
 */
-  
+
 h1 {
   text-align: center;
 }
-  
+
 div#fade{
 /*  rgba(0, 0, 0, 0.5) */
   background-color:rgba(255, 255, 255, 0.5);
   margin-right: 110px;
   margin-left: 110px;
   margin-top: 0px;
-  margin-bottom: 1000px;
+  height: 95%;
   text-align: center;
-  padding-bottom: 500px;
   background-attachment: fixed;
   position: relative;
 }
 div#content{
   height: 500px;
-  top: 300px;
+  top: 200px;
   position: absolute;
+  width: 90%;
+  left: 5%;
 }
 div#title{
   background-color:#f9faff;
@@ -41,6 +42,7 @@ div#title{
   top: 0px;
   position: relative;
   color: black;
+  z-index: 2;
   }
 body {
   background-image: url(http://vignette1.wikia.nocookie.net/mlp/images/2/2c/Ponyville_in_the_opening_theme.png);
@@ -64,30 +66,62 @@ position:absolute;
   <figure>
 <img style="float:left;width:100px;height:100px;" src="http://orig08.deviantart.net/693a/f/2017/002/4/8/adorable_karma_holding_bags_by_torvusil-dau0xot.png" alt="Pony;">
 </figure>
-  <img id="cloud" src="TitleCloud.png">
+  <img id="cloud" src="resources/TitleCloud.png">
   </div>
 
 <div id="fade">
 <div id="content">
 Imput image URL add a title and hit generate.
-<br>
+<br><br>
+
 <div id="output">
-<input type="text" id="imginput" value="URL">
+  <br>
+<input type="text" id="imginput" placeholder="URL">
+<br>
+<input type="text" id="titleinput" placeholder="Title">
+<br>
+<button onclick="urlGen()">Generate</button>
 
-
-<button onclick="myFunction()">Generate</button>
   </div>
+  Explaination:
+<br><br>
+This is just a quick site I threw together to demonstrate what I was suggesting.
+<br>Right now, all that's coded in is the generation of the submission link using the two text field entrees.
+ If the URL ends in a image file extension, it sets the background to that image and displays the
+ image URL. If the URL is anything else, it generates a reddit submission URL to my test sub /r/CSStestchamber
+ using the title input. <br>
+ Eventually, both of these should be done with any given URL (assuming it's one to either derpibooru or deviantart),
+ as the site would fetch the actual image.<br> I have also admittedly avoided the hardest part for this demo,
+ which is parsing the relivant image database pages for the tags. I have been looking into it, however, and luckily
+ it doesn't seem too dificult. Both derpibooru and deviantart have APIs I can use for that. Once I can fetch the tags,
+ it's just one simple loop to make submission links for each of the associated subs from your list!
+ <br>
+ I would also host it off a different Github domain,
+ and make it prettier of course.
+ <br>
+ - Faranight
   </div>
 
 <script>
-function myFunction() {
-    var x = document.getElementById("imginput").value;
-    document.getElementById("output").innerHTML = x;
-    document.body.style.backgroundImage = "url("+x+")";
+function urlGen() {
+    var url = document.getElementById("imginput").value;
+    var title = document.getElementById("titleinput").value;
+    var png = url.endsWith(".png");
+    var jpg = url.endsWith(".jpg");
+    var jpeg = url.endsWith(".jpeg");
+
+    if (png == true || jpg == true || jpeg == true) {
+      document.getElementById("output").innerHTML = url;
+      document.body.style.backgroundImage = "url("+url+")";
+    }
+    else{
+      document.getElementById("output").innerHTML = 'https://www.reddit.com/r/CSStestchamber/submit?url=' + url + '&title=' + title;
+    }
+
 }
 </script>
-  
-  
+
+
 </div>
 
   </body>
