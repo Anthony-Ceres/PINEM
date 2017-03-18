@@ -1,18 +1,21 @@
 
 <html>
-<title>Heya!</title>
+<title>Submission Creator</title>
 <style>
+  /*
+@Faranight To fetch tags specifically, you'll want to use GET /deviation/metadata, but you'll first need the deviationid UUID. AFAIK the only way to get that is to query the API using a /gallery/ endpoint, which will return the UUID as well as other data. So essentially to find a deviation based off a URL, you have to match the URL given with the url field for any given deviation.
+and yes, I'm stupid and didn't clearly see the tags on the deviation pages.
+It is, of course, easier to continually query DeviantArt's /gallery/ API endpoints until you find the matching image as opposed to writing a manual data scraper from the page.
+wot
+Although the DeviantArt API is specifically designed to not allow you to find deviationid UUIDs with a URL, these UUIDs appear to be clearly exposed with the HTML meta-tag defined apple-itunes-app, so you can easily scrape it there. You don't have to code too much around this because you can only fetch the header of the HTML page and read it using some sort of DOM handling. (PHP has the DOM extension, JavaScript is probably well suited to this but I haven't touched it in ages.)
+*/
+  
 h1 {
   color: white;
   text-align: center;
 }
-@keyframes twiframe{
-  from {
-  transform: rotateY(0deg); /* Standard syntax */
-  }
-  to {  transform: rotateY(360deg); /* Standard syntax */
-  }
-}
+
+  
 div#fade{
 /*  rgba(0, 0, 0, 0.5) */
   background-color:rgba(255, 255, 255, 0.5);
@@ -24,15 +27,7 @@ div#fade{
   padding-bottom: 500px;
   background-attachment: fixed;
 }
-figure#twilight{
-  text-align: left;
-  margin-right: 70px;
-  margin-left: 70px;
-  animation-name: twiframe;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
+
 body {
   background-image: url(https://s-media-cache-ak0.pinimg.com/originals/94/72/a0/9472a08587c01043023988df81737e34.jpg);
   background-repeat: no-repeat;
@@ -41,18 +36,12 @@ body {
 }
 </style>
 <body>
-<h1>I have done nothing of productivity all day!</h1>
+<h1>Generate submission links for all relivant subs!</h1>
 
- <figure id="twilight">
-<img src="http://pre05.deviantart.net/30f4/th/pre/f/2016/342/1/0/am_i_a_cute_horse__by_slb94-daqz7je.png" alt="Pony" style="width:100px;height:130px;">
-<img style="float:right;width:100px;height:130px;" src="http://pre08.deviantart.net/5396/th/pre/f/2016/081/f/4/observant_glimmer_by_slb94-d9w3wuq.png" alt="Pony";>
-</figure>
+
 <div id="fade">
-  <a href="page.html">page</a>
-<br>
-  <a href="resources/imlibrary.html">page</a>
-<br>
-Testing Simple Design
+
+Imput image URL add a title and hit generate.
 <br>
 <div id="output">
 <input type="text" id="imginput" value="URL">
@@ -69,11 +58,9 @@ function myFunction() {
     document.body.style.backgroundImage = "url("+x+")";
 }
 </script>
-<p>Input image URL and hit Generate.</p>
   
   
 </div>
-  
 
-</body>
+  </body>
 </html>
